@@ -1,5 +1,4 @@
-local animations = require 'libs/animations'
-require 'libs/primitives'
+local animations = require '.'
 
 local primitiveRing = nil
 
