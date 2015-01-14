@@ -32,10 +32,12 @@ function animations.__new(args)
   function base:stop()
   	self.active = false
   	self.timer.cancel(self.timerHandle)
+    animations.register[base.index] = nil
   end
 
   base:start()
-  animations.register[#animations.register + 1] = base
+  base.index = #animations.register + 1
+  animations.register[base.index] = base
 
   return base
 end
