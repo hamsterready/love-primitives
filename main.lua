@@ -16,12 +16,19 @@ end
 
 function love.draw()
 	love.graphics.setColor(255, 255, 255, 255)
-	love.graphics.print("Mouse button to pin animation. Delete to clear animations.", 10, 10)
+	love.graphics.print("Mouse button to pin animation. Delete to clear animations. Space to pause.", 10, 10)
 	love.graphics.print("Nodes: " .. nodes, 10, 30)
 	
 
+	love.graphics.setColor(255, 255, 255, 255)
+	Primitives.thunderbolt(300, 300, 20, 50, math.pi/10)
+	love.graphics.setColor(255, 255, 255, 155)
+	Primitives.thunderbolt(310, 300, 20, 50, math.pi/10)
+
 	love.graphics.setColor(255, 255, 155, 255)
 	animations.draw()
+
+
 end
 
 function love.mousepressed(mx, my, button)

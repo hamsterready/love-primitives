@@ -78,3 +78,38 @@ function Primitives.dashedLine(x1, y1, x2, y2)
     xp, yp = x, y
   end
 end
+
+local thunderboltPts = {
+   2,   0, 
+  27,   1, 
+  23,  88, 
+  60,  52, 
+  33, 211, 
+  33, 111, 
+  10, 129,
+   2,   0}
+local thunderboltCanvases = {}
+
+function Primitives.thunderbolt(x, y, w, h, r)
+  r = r or 0
+  local pts = {}
+  local wRatio = w/60
+  local hRatio = h/211
+  local sin, cos = math.sin(r), math.cos(r)
+  local sx, sy = w/2, h/2
+
+  for i=1,#thunderboltPts, 2 do
+    pts[i] =  thunderboltPts[i] * wRatio
+    pts[i+1] = thunderboltPts[i+1] * hRatio
+
+    px = pts[i]
+    py = pts[i+1]
+
+    pts[i] = x+ cos * (px-sx) - sin * (py-sy)
+    pts[i+1] = y+ sin * (px-sx) + cos * (py-sy)
+  end
+
+  love.graphics.line(pts)
+
+
+end
